@@ -1,11 +1,11 @@
 import {BeDecoratedProps, MinimalProxy} from 'be-decorated/types';
 
 export interface EndUserProps {
-    propagate: string[];
+    propagate?: string[],
 }
 
 export interface VirtualProps extends EndUserProps, MinimalProxy{
-    propagator: EventTarget;
+    propagators: {[key: string]: EventTarget};
 }
 
 export type Proxy = HTMLTemplateElement & VirtualProps;

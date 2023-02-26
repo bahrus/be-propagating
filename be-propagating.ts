@@ -4,11 +4,23 @@ import { register } from 'be-hive/register.js';
 
 export class BePropagating extends EventTarget implements Actions {
     async hydrate(pp: PP): Promise<PPP> {
-        const {self} = pp;
-        const {BePropagating} = await import('trans-render/lib/bePropagating2.js');
-        const propagator = new BePropagating(self);
+        const {self, propagate} = pp;
+        const {BePropagating: BP} = await import('trans-render/lib/bePropagating2.js');
+        const propagators:  {[key: string]: EventTarget} = {};
+        for(const propagatePath of propagate!){
+            
+            if(propagatePath === 'self'){
+                const propagator = new BP(self);
+                propagators['self'] = propagator;
+            }else{
+                const {homeInOn} = await import('trans-render/lib/homeInOn.js');
+                const target = await homeInOn(self, propagatePath);
+                const propagator = new BP(target);
+                propagators[propagatePath] = propagator;
+            }
+        }
         return {
-            propagator,
+            propagators,
             resolved: true
         } as PPP;
     }
@@ -24,7 +36,13 @@ define<VirtualProps & BeDecoratedProps<VirtualProps, Actions>, Actions>({
         propDefaults:{
             ifWantsToBe,
             upgrade,
-            virtualProps: ['propagate']
+            virtualProps: ['propagate', 'propagators'],
+            proxyPropDefaults:{
+                propagate: ['self']
+            }
+        },
+        actions: {
+            hydrate: 'propagate'
         }
     }
 });
