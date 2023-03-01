@@ -8,7 +8,6 @@ export class BePropagating extends EventTarget implements Actions {
         const {BePropagating: BP} = await import('trans-render/lib/bePropagating2.js');
         const propagators:  {[key: string]: EventTarget} = {};
         for(const propagatePath of propagate!){
-            
             if(propagatePath === 'self'){
                 const propagator = new BP(self);
                 propagators['self'] = propagator;
