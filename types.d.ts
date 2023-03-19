@@ -5,7 +5,7 @@ export interface EndUserProps {
 }
 
 export interface VirtualProps extends EndUserProps, MinimalProxy{
-    propagators: {[key: string]: EventTarget};
+    propagators: Map<string, EventTarget>;
 }
 
 export type Proxy = HTMLTemplateElement & VirtualProps;
