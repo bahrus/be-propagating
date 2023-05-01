@@ -1,22 +1,19 @@
-import {BeDecoratedProps, MinimalProxy} from 'be-decorated/types';
+import {ActionOnEventConfigs} from 'trans-render/froop/types';
+import {IBE} from 'be-enhanced/types';
 
-export interface EndUserProps {
+export interface EndUserProps extends IBE{
     propagate?: string[],
 }
 
-export interface VirtualProps extends EndUserProps, MinimalProxy{
+export interface AllProps extends EndUserProps{
     propagators: Map<string, EventTarget>;
 }
 
-export type Proxy = HTMLTemplateElement & VirtualProps;
-
-export interface PP extends VirtualProps{
-    proxy: Proxy;
-}
-
-export type PPP = Partial<PP>;
+export type AP = AllProps;
+export type PAP = Partial<AP>;
+export type ProPAP = Promise<PAP>;
 
 
 export interface Actions{
-    hydrate(pp: PP): Promise<PPP>
+    hydrate(self: this): ProPAP
 }
