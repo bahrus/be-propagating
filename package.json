@@ -1,6 +1,6 @@
 {
   "name": "be-propagating",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "keywords": [
     "web-components",
     "web-component",
@@ -14,7 +14,7 @@
   "description": "e-propagating creates a subscribable EventTarget, which watches for changes to a provided list of properties of the element it adorns, and the event target emits events with the same name every time the property value changes",
   "main": "be-propagating.js",
   "module": "be-propagating.js",
-  "exports":{
+  "exports": {
     ".": "./be-propagating.js",
     "./be-propagating.js": "./be-propagating.js"
   },
