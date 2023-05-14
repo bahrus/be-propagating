@@ -1,16 +1,36 @@
 {
   "name": "be-propagating",
   "version": "0.0.6",
-  "description": "",
-  "main": "index.js",
+  "keywords": [
+    "web-components",
+    "web-component",
+    "custom-element",
+    "custom-elements",
+    "decorate",
+    "enhancement",
+    "behavior",
+    "directive"
+  ],
+  "description": "e-propagating creates a subscribable EventTarget, which watches for changes to a provided list of properties of the element it adorns, and the event target emits events with the same name every time the property value changes",
+  "main": "be-propagating.js",
+  "module": "be-propagating.js",
+  "exports":{
+    ".": "./be-propagating.js",
+    "./be-propagating.js": "./be-propagating.js"
+  },
+  "files": [
+    "*.js",
+    "types.d.ts"
+  ],
+  "types": "types.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "be-enhanced": "0.0.13",
-    "be-hive": "0.0.91",
-    "trans-render": "0.0.677",
-    "xtal-element": "0.0.559"
+    "be-enhanced": "0.0.17",
+    "be-hive": "0.0.92",
+    "trans-render": "0.0.680",
+    "xtal-element": "0.0.560"
   },
   "devDependencies": {
     "@playwright/test": "1.33.0",

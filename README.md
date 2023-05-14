@@ -1,4 +1,4 @@
-# be-propagating [TODO]
+# be-propagating
 
 be-propagating creates a subscribable EventTarget, which watches for changes to a provided list of properties of the element it adorns, and the event target emits events with the same name every time the property value changes.
 
