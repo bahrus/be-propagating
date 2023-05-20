@@ -47,12 +47,13 @@ const xe = new XE<AP, Actions>({
         tagName,
         propDefaults: {
             ...propDefaults,
+            propagate: ['self']
         },
         propInfo: {
             ...propInfo
         },
         actions:{
-
+            hydrate: 'propagate'
         }
     },
     superclass: BePropagating
