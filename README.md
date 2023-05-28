@@ -26,5 +26,5 @@ In the examples below, we assume some-element is a custom element that has prope
 
 
 
-The EventTarget object can be obtained from someElement.beDecorated.propagating.propagator.
+The EventTarget object can be obtained from someElement.beEnhanced.bePropagating.propagator.
 
