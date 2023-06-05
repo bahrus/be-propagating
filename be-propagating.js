@@ -30,6 +30,24 @@ export class BePropagating extends BE {
             resolved: true
         };
     }
+    #previousTS = new Map();
+    async setKeyVal(key, val, tsKey = 'timestamp') {
+        const { propagators } = this;
+        //const ts = val[tsKey];
+        if (propagators.has(key))
+            return propagators.get(key);
+        const { BePropagating: BP } = await import('trans-render/lib/bePropagating2.js');
+        const propagator = new BP(val);
+        propagators.set(key, propagator);
+        return propagator;
+        // if(propagators.has(key)){
+        //     const propagator = propagators.get(key);
+        //     return propagator;
+        //     //TODO support timestamp check
+        //     // if(this.#previousTS.has(key) && this.#previousTS.get(key) === ts) return;
+        //     // this.#previousTS.set(key, ts);
+        // }
+    }
 }
 const tagName = 'be-propagating';
 const ifWantsToBe = 'propagating';

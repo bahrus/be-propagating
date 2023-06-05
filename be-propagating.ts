@@ -34,6 +34,23 @@ export class BePropagating extends BE<AP, Actions> implements Actions{
             resolved: true
         } as PAP;
     }
+    #previousTS = new Map<string, string | number>();
+    async setKeyVal(key: string, val: any, tsKey: string | undefined = 'timestamp'): Promise<EventTarget> {
+        const {propagators} = this;
+        //const ts = val[tsKey];
+        if(propagators.has(key)) return propagators.get(key) as EventTarget;
+        const {BePropagating: BP} = await import('trans-render/lib/bePropagating2.js');
+        const propagator = new BP(val);
+        propagators.set(key, propagator);
+        return propagator;
+        // if(propagators.has(key)){
+        //     const propagator = propagators.get(key);
+        //     return propagator;
+        //     //TODO support timestamp check
+        //     // if(this.#previousTS.has(key) && this.#previousTS.get(key) === ts) return;
+        //     // this.#previousTS.set(key, ts);
+        // }
+    }
 }
 
 export interface BePropagating extends AllProps{}
