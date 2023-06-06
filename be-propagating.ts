@@ -42,6 +42,7 @@ export class BePropagating extends BE<AP, Actions> implements Actions{
         const {BePropagating: BP} = await import('trans-render/lib/bePropagating2.js');
         const propagator = new BP(val);
         propagators.set(key, propagator);
+        this.dispatchEvent(new Event(key));
         return propagator;
         // if(propagators.has(key)){
         //     const propagator = propagators.get(key);
@@ -50,6 +51,20 @@ export class BePropagating extends BE<AP, Actions> implements Actions{
         //     // if(this.#previousTS.has(key) && this.#previousTS.get(key) === ts) return;
         //     // this.#previousTS.set(key, ts);
         // }
+    }
+
+    getPropagator(key: string): Promise<EventTarget>{
+        return new Promise((resolve, reject) => {
+            const {propagators} = this;
+            if(propagators.has(key)) {
+                resolve(propagators.get(key)!);
+                return;
+            }
+            this.addEventListener(key, e => {
+                resolve(propagators.get(key)!);
+            })
+        })
+
     }
 }
 
