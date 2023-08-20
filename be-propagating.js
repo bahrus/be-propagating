@@ -68,6 +68,7 @@ const upgrade = '*';
 const xe = new XE({
     config: {
         tagName,
+        isEnh: true,
         propDefaults: {
             ...propDefaults,
             propagate: ['self']

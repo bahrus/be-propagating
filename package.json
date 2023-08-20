@@ -24,16 +24,18 @@
   ],
   "types": "types.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "safari": "npx playwright wk http://localhost:3030",
+    "update": "ncu -u && npm install"
   },
   "dependencies": {
-    "be-enhanced": "0.0.33",
-    "be-hive": "0.0.109",
-    "trans-render": "0.0.693",
-    "xtal-element": "0.0.571"
+    "be-enhanced": "0.0.41",
+    "be-hive": "0.0.116",
+    "trans-render": "0.0.702",
+    "xtal-element": "0.0.577"
   },
   "devDependencies": {
-    "@playwright/test": "1.35.1",
+    "@playwright/test": "1.37.1",
     "may-it-serve": "0.0.5"
   },
   "repository": {
