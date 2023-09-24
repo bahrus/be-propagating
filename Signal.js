@@ -6,15 +6,13 @@ export class Signal extends EventTarget {
         this.propagator = propagator;
         this.prop = prop;
         propagator.addEventListener(prop, e => {
-            this.#value = propagator[prop];
             this.dispatchEvent(new Event('value-changed'));
         });
     }
-    #value;
     get value() {
-        return this.#value;
-    }
-    set value(nv) {
-        this.#value = nv;
+        const deref = this.propagator?.targetRef?.deref();
+        if (deref === undefined)
+            return undefined;
+        return deref[this.prop];
     }
 }
