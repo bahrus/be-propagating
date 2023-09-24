@@ -66,6 +66,10 @@ export class BePropagating extends BE<AP, Actions> implements Actions{
         })
 
     }
+
+    async getSignal(key: string, prop: string){
+        
+    }
 }
 
 export interface BePropagating extends AllProps{}

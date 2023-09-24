@@ -61,6 +61,8 @@ export class BePropagating extends BE {
             });
         });
     }
+    async getSignal(key, prop) {
+    }
 }
 const tagName = 'be-propagating';
 const ifWantsToBe = 'propagating';
