@@ -61,7 +61,10 @@ export class BePropagating extends BE {
             });
         });
     }
-    async getSignal(key, prop) {
+    async getSignal(prop, key) {
+        const { Signal } = await import('./Signal.js');
+        const propagator = await this.getPropagator(key || 'self');
+        return new Signal(propagator, prop);
     }
 }
 const tagName = 'be-propagating';

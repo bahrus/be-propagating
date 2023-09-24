@@ -67,8 +67,10 @@ export class BePropagating extends BE<AP, Actions> implements Actions{
 
     }
 
-    async getSignal(key: string, prop: string){
-        
+    async getSignal(prop: string, key?: string){
+        const {Signal} = await import('./Signal.js');
+        const propagator = await this.getPropagator(key || 'self');
+        return new Signal(propagator, prop);
     }
 }
 
