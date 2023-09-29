@@ -9,6 +9,7 @@ export class BePropagating extends BE {
     }
     async hydrate(self) {
         const { enhancedElement, propagate, propagators } = self;
+        //console.log(enhancedElement)
         const { BePropagating: BP } = await import('trans-render/lib/bePropagating2.js');
         const newPropagators = propagators || new Map();
         for (const propagatePath of propagate) {
@@ -25,6 +26,7 @@ export class BePropagating extends BE {
                 newPropagators.set(propagatePath, propagator);
             }
         }
+        //console.log({enhancedElement, newPropagators});
         return {
             propagators: newPropagators,
             resolved: true

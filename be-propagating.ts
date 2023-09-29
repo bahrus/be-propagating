@@ -15,6 +15,7 @@ export class BePropagating extends BE<AP, Actions> implements Actions{
 
     async hydrate(self: this): ProPAP {
         const {enhancedElement, propagate, propagators} = self;
+        //console.log(enhancedElement)
         const {BePropagating: BP} = await import('trans-render/lib/bePropagating2.js');
         const newPropagators:  Map<string, EventTarget> = propagators || new Map<string, EventTarget>();
         for(const propagatePath of propagate!){
@@ -29,6 +30,7 @@ export class BePropagating extends BE<AP, Actions> implements Actions{
                 newPropagators.set(propagatePath, propagator);
             }
         }
+        //console.log({enhancedElement, newPropagators});
         return {
             propagators: newPropagators,
             resolved: true
