@@ -12,5 +12,11 @@ export class Signal extends EventTarget{
         if(deref === undefined) return undefined;
         return deref[this.prop];
     }
+
+    set value(nv: any){
+        const deref = (<any>this.propagator)?.targetRef?.deref();
+        if(deref === undefined) return;
+        deref[this.prop] = nv;
+    }
     
 }
