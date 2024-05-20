@@ -1,4 +1,4 @@
-export class Signal extends EventTarget{
+export class Gate extends EventTarget{
     constructor(public propagator: EventTarget, public prop: string){
         super();
         propagator.addEventListener(prop, e => {

@@ -9,7 +9,7 @@
 		"strict": true,
 	},
 	"files":[
-		"be-propagating.ts"
+		"behivior.ts"
 	],
 	"exclude":[
 		"node_modules"
