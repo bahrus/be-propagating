@@ -23,5 +23,5 @@ export interface Actions{
     hydrate(self: this): ProPAP;
     setKeyVal(key: string, val: any, tsKey?: string): Promise<EventTarget>;
     getPropagator(key: string): Promise<EventTarget>;
-    getSignal(prop: string, key?: string): Promise<ISignal>
+    getGate(prop: string, key?: string): Promise<ISignal>
 }
