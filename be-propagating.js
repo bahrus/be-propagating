@@ -1,6 +1,19 @@
+import { config as beCnfg } from 'be-enhanced/config.js';
 import { BE } from 'be-enhanced/BE.js';
 export class BePropagating extends BE {
-    static config = {};
+    static config = {
+        propDefaults: {
+            propagate: ['self']
+        },
+        propInfo: {
+            ...(beCnfg.propInfo)
+        },
+        actions: {
+            hydrate: {
+                ifAllOf: 'propagate'
+            }
+        }
+    };
     async hydrate(self) {
         const { enhancedElement, propagate, propagators } = self;
         const { BePropagating: BP } = await import('trans-render/lib/bePropagating2.js');
