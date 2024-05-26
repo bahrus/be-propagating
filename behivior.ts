@@ -1,18 +1,21 @@
-import './behance.js';
-import {BeHive} from 'be-hive/be-hive.js';
+import {BeHive, EnhancementMountCnfg} from 'be-hive/be-hive.js';
+import {MountObserver, MOSE} from 'mount-observer/MountObserver.js';
 
-BeHive.registry.register({
-    base: 'be-propagating',
-    enhPropKey: 'bePropagating',
+const base = 'be-propagating';
+const emc: EnhancementMountCnfg = {
+    base,
     map: {
         '0.0': 'ni'
     },
-    do: {
-        mount: {
-            import: async() => {
-                const {BePropagating} = await import('./be-propagating.js');
-                return BePropagating;
-            }
-        }
+    enhPropKey: 'bePropagating',
+    importEnh: async () => {
+        const {BePropagating} = await import('./behance.js');
+        return BePropagating;
     }
-});
+};
+
+const mose = document.createElement('script') as MOSE<EnhancementMountCnfg>;
+mose.id = base;
+mose.synConfig = emc;
+
+MountObserver.synthesize(document, BeHive, mose);
