@@ -6,7 +6,8 @@ export class BePropagating extends BE {
             propagate: ['self']
         },
         propInfo: {
-            ...(beCnfg.propInfo)
+            ...(beCnfg.propInfo),
+            propagators: {},
         },
         actions: {
             hydrate: {
