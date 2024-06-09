@@ -16,7 +16,8 @@
   "module": "be-propagating.js",
   "exports": {
     ".": "./be-propagating.js",
-    "./be-propagating.js": "./be-propagating.js"
+    "./be-propagating.js": "./be-propagating.js",
+    "./Gate.js": "./Gate.js"
   },
   "files": [
     "*.js",
@@ -28,9 +29,9 @@
     "update": "ncu -u && npm install"
   },
   "dependencies": {
-    "be-enhanced": "0.0.97",
-    "be-hive": "0.0.170",
-    "trans-render": "0.0.779"
+    "be-enhanced": "0.0.98",
+    "be-hive": "0.0.175",
+    "trans-render": "0.0.780"
   },
   "devDependencies": {
     "@playwright/test": "1.44.1",
