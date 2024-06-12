@@ -1,6 +1,6 @@
 import { config as beCnfg } from 'be-enhanced/config.js';
 import { BE } from 'be-enhanced/BE.js';
-export class BePropagating extends BE {
+class BePropagating extends BE {
     static config = {
         propDefaults: {
             propagate: ['self']
@@ -68,3 +68,5 @@ export class BePropagating extends BE {
         return new Gate(propagator, prop);
     }
 }
+await BePropagating.bootUp();
+export { BePropagating };

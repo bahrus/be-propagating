@@ -3,7 +3,7 @@ import {BE, BEConfig, propDefaults} from 'be-enhanced/BE.js';
 import {Actions, AllProps, AP, ProPAP, PAP} from './types';
 import {IEnhancement,  BEAllProps} from 'trans-render/be/types';
 
-export class BePropagating extends BE implements Actions{
+class BePropagating extends BE implements Actions{
     static override config: BEConfig<AllProps & BEAllProps, Actions & IEnhancement, any> = {
         propDefaults:{
             propagate: ['self']
@@ -73,4 +73,8 @@ export class BePropagating extends BE implements Actions{
     }
 }
 
-export interface BePropagating extends AP{}
+interface BePropagating extends AP{}
+
+await BePropagating.bootUp();
+
+export {BePropagating}

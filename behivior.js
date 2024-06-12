@@ -6,7 +6,7 @@ export const emc = {
     },
     enhPropKey: 'bePropagating',
     importEnh: async () => {
-        const { BePropagating } = await import('./behance.js');
+        const { BePropagating } = await import('./be-propagating.js');
         return BePropagating;
     }
 };
