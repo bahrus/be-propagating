@@ -1,7 +1,7 @@
 import {config as beCnfg} from 'be-enhanced/config.js';
 import {BE, BEConfig, propDefaults} from 'be-enhanced/BE.js';
 import {Actions, AllProps, AP, ProPAP, PAP} from './types';
-import {IEnhancement,  BEAllProps} from 'trans-render/be/types';
+import {IEnhancement,  BEAllProps} from './ts-refs/trans-render/be/types';
 
 class BePropagating extends BE implements Actions{
     static override config: BEConfig<AllProps & BEAllProps, Actions & IEnhancement, any> = {
