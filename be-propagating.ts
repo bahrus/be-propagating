@@ -1,6 +1,6 @@
 import {config as beCnfg} from 'be-enhanced/config.js';
 import {BE, BEConfig, propDefaults} from 'be-enhanced/BE.js';
-import {Actions, AllProps, AP, ProPAP, PAP} from './types';
+import {Actions, AllProps, AP, ProPAP, PAP} from './ts-refs/be-propagating/types';
 import {IEnhancement,  BEAllProps} from './ts-refs/trans-render/be/types';
 
 class BePropagating extends BE implements Actions{
@@ -67,7 +67,7 @@ class BePropagating extends BE implements Actions{
     }
 
     async getGate(prop: string, key?: string){
-        const {Gate} = await import('./Gate.js');
+        const {Gate} = await import('./Gate.void');
         const propagator = await this.getPropagator(key || 'self');
         return new Gate(propagator, prop);
     }

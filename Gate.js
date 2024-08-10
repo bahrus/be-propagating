@@ -1,6 +1,19 @@
+//@ts-check
+
 export class Gate extends EventTarget {
+    /**
+     * @type {EventTarget}
+     */
     propagator;
+    /**
+     * @type {string}
+     */
     prop;
+    /**
+     * 
+     * @param {EventTarget} propagator 
+     * @param {string} prop 
+     */
     constructor(propagator, prop) {
         super();
         this.propagator = propagator;
@@ -10,13 +23,18 @@ export class Gate extends EventTarget {
         });
     }
     get value() {
-        const deref = this.propagator?.targetRef?.deref();
+        const deref = /** @type {any} */
+        (this.propagator)
+        ?.targetRef?.deref();
         if (deref === undefined)
             return undefined;
         return deref[this.prop];
     }
     set value(nv) {
-        const deref = this.propagator?.targetRef?.deref();
+        const deref = 
+            /** @type {any} */
+            (this.propagator)
+            ?.targetRef?.deref();
         if (deref === undefined)
             return;
         deref[this.prop] = nv;
