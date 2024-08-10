@@ -1,12 +1,18 @@
-import { config as beCnfg } from 'be-enhanced/config.js';
+// @ts-check
+import { resolved, rejected, propInfo} from 'be-enhanced/cc.js';
 import { BE } from 'be-enhanced/BE.js';
+/** @import {AP, Actions} from './ts-refs/be-propagating/types' */
+
+/**
+ * @implements {Actions}
+ */
 class BePropagating extends BE {
     static config = {
         propDefaults: {
             propagate: ['self']
         },
         propInfo: {
-            ...(beCnfg.propInfo),
+            ...propInfo,
             propagators: {},
         },
         actions: {
@@ -40,7 +46,10 @@ class BePropagating extends BE {
     }
     #previousTS = new Map();
     async setKeyVal(key, val, tsKey = 'timestamp') {
-        const { propagators } = this;
+        const { propagators } = 
+        /** @type {AP} */
+        /** @type {any} */
+        (this);
         //const ts = val[tsKey];
         if (propagators.has(key))
             return propagators.get(key);
@@ -52,7 +61,10 @@ class BePropagating extends BE {
     }
     getPropagator(key) {
         return new Promise((resolve, reject) => {
-            const { propagators } = this;
+            const { propagators } = 
+            /** @type {AP} */
+            /** @type {any} */
+            (this);
             if (propagators.has(key)) {
                 resolve(propagators.get(key));
                 return;
